@@ -21,6 +21,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "experiments": {
+      "turboModules": true
+    },
+    "description": "",
+    "githubUrl": "https://github.com/cristianbgp/hommie-app"
   }
 }
