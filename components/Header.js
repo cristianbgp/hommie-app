@@ -27,7 +27,7 @@ export default function Header() {
             <Text style={[styles.text, !isLightTheme && { color: "white" }]}>
               Hommie
             </Text>
-            <View style={styles.hommieIcon}>
+            <View style={styles.hommieIcon} testID="hommie-icon">
               <HommieIcon
                 height={40}
                 width={40}
@@ -38,7 +38,7 @@ export default function Header() {
         )}
       </Pressable>
       <View style={styles.actions}>
-        <Pressable onPress={handlePlusIcon}>
+        <Pressable onPress={handlePlusIcon} testID="plus-icon">
           {({ pressed }) => (
             <View
               style={[

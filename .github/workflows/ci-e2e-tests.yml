@@ -1,0 +1,26 @@
+name: E2E tests
+
+on: [push]
+
+jobs:
+  e2e_ios:
+    name: e2e tests
+    runs-on: macos-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 3.x
+          expo-cache: true
+          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+      - run: |
+          brew tap wix/brew
+          brew install applesimutils
+          yarn global add react-native-cli
+          yarn global add detox-cli
+          yarn install
+      - run: yarn e2e:build
+      - run: yarn e2e:test --cleanup --debug-synchronization 200
