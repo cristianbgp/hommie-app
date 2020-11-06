@@ -24,6 +24,7 @@ export default function ToggleThemeButton() {
       onPress={() =>
         setTheme((actualTheme) => (actualTheme === "light" ? "dark" : "light"))
       }
+      testID="theme-icon"
     >
       <Icon height={20} width={20} {...iconProps} />
     </Pressable>

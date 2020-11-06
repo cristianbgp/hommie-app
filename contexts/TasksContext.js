@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const TasksContext = React.createContext();
 
 const initialData = [
-  { id: 1, title: "Title", description: "First description" },
+  { id: 1, title: "First Title", description: "First description" },
   { id: 2, title: "Another title", description: "Second description" },
   { id: 3, title: "Without description" },
   {

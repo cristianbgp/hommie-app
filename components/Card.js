@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Pressable, Text, StyleSheet, View } from "react-native";
 import { BottomSheetContext } from "../contexts/BottomSheetContext";
 import { TasksContext } from "../contexts/TasksContext";
+import slugify from "../utils/slugify";
 import CheckIcon from "./icons/CheckIcon";
 
 export default function Card({ item, isFirst, isLast }) {
@@ -23,10 +24,14 @@ export default function Card({ item, isFirst, isLast }) {
         isLast && { marginBottom: 60 },
       ]}
       onPress={handlePress}
+      testID={`task-card-${slugify(title)}`}
     >
       {({ pressed }) => (
         <>
-          <Pressable onPress={() => toggleCompleted(id)}>
+          <Pressable
+            onPress={() => toggleCompleted(id)}
+            testID={`circle-icon-task-${id}`}
+          >
             <View style={[styles.checkbox, pressed && { opacity: 0.7 }]}>
               {completed && (
                 <CheckIcon
@@ -34,6 +39,7 @@ export default function Card({ item, isFirst, isLast }) {
                   width={30}
                   stroke="black"
                   strokeWidth={2}
+                  testID={`check-icon-task-${id}`}
                 />
               )}
             </View>

@@ -98,14 +98,17 @@ export default function BottomSheetWrapper() {
           {showedTask ? "Edit a task" : "Add a new task"}
         </Text>
         <KeyboardAwareScrollView keyboardShouldPersistTaps="handled">
-          <Text style={styles.label}>Title</Text>
+          <Text style={styles.label} accessibilityLabel="title">
+            Title
+          </Text>
           <TextInput
             style={styles.titleInput}
             value={title}
             onChangeText={handleTitle}
             placeholder="Add a new task title"
+            testID="input-title"
           />
-          <Text style={styles.label}>
+          <Text style={styles.label} accessibilityLabel="description">
             Description <Text style={styles.optionalText}>(optional)</Text>
           </Text>
           <TextInput
@@ -114,6 +117,7 @@ export default function BottomSheetWrapper() {
             onChangeText={handleDescription}
             placeholder="Add a description"
             multiline={true}
+            testID="input-description"
           />
           <View style={styles.footer}>
             {showedTask && (
@@ -123,7 +127,7 @@ export default function BottomSheetWrapper() {
                 </View>
               </TouchableOpacity>
             )}
-            <TouchableOpacity onPress={handleCreateOrEdit} disabled={disabled}>
+            <TouchableOpacity onPress={handleCreateOrEdit} disabled={disabled} testID="submit-button">
               <View
                 style={[styles.button, disabled && { backgroundColor: "gray" }]}
               >
